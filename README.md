@@ -4,6 +4,19 @@ Website sinh nhật tương tác với nhiều hiệu ứng đẹp mắt và tí
 
 ## ✨ Tính Năng Nổi Bật
 
+### � Intoeractive Controls (MỚI!)
+- **Sliders**: Điều chỉnh tốc độ animations
+- **Toggle Switches**: Bật/tắt hiệu ứng
+- **Action Buttons**: Kích hoạt pháo hoa, confetti
+- **Icon Buttons**: Reset, fullscreen, screenshot, share
+- **Custom Checkboxes & Radios**: Tùy chỉnh đẹp mắt
+
+### 📐 Improved Layout (MỚI!)
+- **Better Spacing**: Khoảng cách hợp lý giữa các sections
+- **Section Dividers**: Phân cách đẹp mắt với emoji
+- **Grid Layout**: Responsive grid cho cards
+- **Optimized Flow**: Luồng nội dung mượt mà hơn
+
 ### 🎨 Giao Diện & Hiệu Ứng
 - **Entrance Animation**: Hiệu ứng chào mừng ấn tượng khi vào trang
 - **Floating Hearts & Sparkles**: Trái tim và ngôi sao bay lơ lửng
@@ -18,10 +31,8 @@ Website sinh nhật tương tác với nhiều hiệu ứng đẹp mắt và tí
 - **Pink Fireworks**: Pháo hoa màu hồng khi hoàn thành milestone
 - **Drawing Canvas**: Vẽ tranh tặng người sinh nhật
 
-### ⏰ Đếm Ngược & Thống Kê
-- **Countdown Timer**: Đếm ngược đến ngày sinh nhật
-- **Life Statistics**: Thống kê ngày đã sống, giờ đã trải qua
-- **Year Progress**: Phần trăm năm đã qua
+### ⏰ Đếm Ngược
+- **Countdown Timer**: Đếm ngược đến ngày sinh nhật với hiệu ứng đẹp mắt
 
 ### 🎵 Âm Nhạc & Chia Sẻ
 - **Music Player**: Nhạc sinh nhật tự động
@@ -38,12 +49,22 @@ Website sinh nhật tương tác với nhiều hiệu ứng đẹp mắt và tí
 ### Tùy Chỉnh (Ctrl + Shift + S)
 1. Nhấn **Ctrl + Shift + S** để mở panel cài đặt
 2. Điền thông tin:
-   - **Ngày sinh nhật**: Chọn ngày tháng năm
-   - **Tên người sinh nhật**: Nhập tên
-   - **Lời nhắn**: Viết lời chúc của bạn
+   - **Ngày sinh nhật**: Mặc định 18/02/2027
+   - **Tên người sinh nhật**: Châu cute 🐧
+   - **Lời nhắn**: Đã có sẵn lời chúc đặc biệt
    - **Upload ảnh**: Chọn ảnh sinh nhật
    - **Mật khẩu**: Tạo mật khẩu để khóa quà (tùy chọn)
 3. Nhấn **💾 Lưu Tất Cả**
+
+### Tùy Chỉnh Trải Nghiệm (Sau Khi Mở Quà)
+- **⚡ Tốc Độ Hiệu Ứng**: Điều chỉnh tốc độ animations
+- **🎨 Bật/Tắt Hiệu Ứng**: Toggle particles, hearts, confetti
+- **🎆 Bắn Pháo Hoa**: Kích hoạt pháo hoa bất cứ lúc nào
+- **🎊 Thả Confetti**: Tạo hiệu ứng confetti
+- **🎵 Phát Nhạc**: Bật/tắt nhạc sinh nhật
+- **🔄 Reset**: Làm mới trang
+- **⛶ Toàn Màn Hình**: Xem ở chế độ fullscreen
+- **📤 Chia Sẻ**: Chia sẻ nhanh
 
 ### Sao Lưu & Khôi Phục
 - **Export**: Xuất tất cả cài đặt ra file JSON

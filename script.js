@@ -17,8 +17,8 @@ const giftContainer = document.getElementById('giftContainer');
 const celebrationContent = document.getElementById('celebrationContent');
 const personalMessage = document.getElementById('personalMessage');
 
-// Đặt ngày sinh nhật mặc định là 18 tháng 1
-const defaultBirthday = '2026-01-18';
+// Đặt ngày sinh nhật mặc định là 18 tháng 2 năm 2027
+const defaultBirthday = '2027-02-18';
 let birthdayDate = localStorage.getItem('birthdayDate') || defaultBirthday;
 let birthdayName = localStorage.getItem('birthdayName') || 'Châu cute 🐧';
 let birthdayCustomMessage = localStorage.getItem('birthdayCustomMessage') || 'Ô wow vậy chúng ta sắp xa cách rồi sao đúng là thời giang trôi qua nhanh thật đến khi nhận ra rồi thì có thể quá muộn nhưng ngày này cũng là sn m đúng không uc, vậy h t lặp cái web này không phải để nói ra về sự xa cách mà ở đây t chúc mứng sn m và không vòng vo nữa t chúc m mỗi ngày đẹp đẽ hơn, cao hơn, sống vui vẻ, tự tin hơn để tiến đến những thành công van dội của cuộc sống và nhớ kèo mỳ cay nha, bao t nha - from mỳ cay🐧';
@@ -797,58 +797,7 @@ document.addEventListener('keydown', (e) => {
 
 // ===== ADVANCED BREAKTHROUGH FEATURES =====
 
-// ===== 7. LIFE STATISTICS =====
-function updateLifeStats() {
-    const birthDate = new Date(birthdayDate);
-    const now = new Date();
-    
-    // Calculate days lived
-    const daysLived = Math.floor((now - birthDate) / (1000 * 60 * 60 * 24));
-    const hoursLived = Math.floor((now - birthDate) / (1000 * 60 * 60));
-    
-    // Calculate year progress
-    const yearStart = new Date(now.getFullYear(), 0, 1);
-    const yearEnd = new Date(now.getFullYear() + 1, 0, 1);
-    const yearProgress = ((now - yearStart) / (yearEnd - yearStart) * 100).toFixed(1);
-    
-    // Update display with animation
-    animateNumber('daysLived', 0, daysLived, 2000);
-    animateNumber('hoursLived', 0, hoursLived, 2000);
-    
-    const yearProgressEl = document.getElementById('yearProgress');
-    if (yearProgressEl) {
-        let current = 0;
-        const increment = yearProgress / 100;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= yearProgress) {
-                yearProgressEl.textContent = yearProgress + '%';
-                clearInterval(timer);
-            } else {
-                yearProgressEl.textContent = current.toFixed(1) + '%';
-            }
-        }, 20);
-    }
-}
 
-function animateNumber(elementId, start, end, duration) {
-    const element = document.getElementById(elementId);
-    if (!element) return;
-    
-    const range = end - start;
-    const increment = range / (duration / 16);
-    let current = start;
-    
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= end) {
-            element.textContent = end.toLocaleString();
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current).toLocaleString();
-        }
-    }, 16);
-}
 
 // ===== 4. 3D CAKE INTERACTION =====
 const cake3d = document.getElementById('cake3d');
@@ -1039,12 +988,8 @@ function generateQRCode() {
 
 // Initialize advanced features
 setTimeout(() => {
-    updateLifeStats();
     generateQRCode();
 }, 1000);
-
-// Update life stats every minute
-setInterval(updateLifeStats, 60000);
 
 // ===== GLOBAL ERROR HANDLERS =====
 window.addEventListener('error', (event) => {
@@ -1114,7 +1059,6 @@ function initializeApp() {
         updateCountdown();
         createParticles();
         createFloatingEmojis();
-        updateLifeStats();
         generateQRCode();
     }, null, 'Không thể khởi tạo ứng dụng');
 }
@@ -1823,5 +1767,251 @@ if (unlockBtn) {
             }, 500);
             showNotification('❌ Mật khẩu không đúng!', 'error');
         }
+    };
+}
+
+
+// ===== INTERACTIVE ELEMENTS =====
+
+// Add interactive controls panel
+function addInteractiveControls() {
+    const celebrationContent = document.getElementById('celebrationContent');
+    if (!celebrationContent) return;
+    
+    // Create controls section
+    const controlsSection = document.createElement('div');
+    controlsSection.className = 'interactive-controls';
+    controlsSection.style.cssText = `
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 30px;
+        margin: 40px 0;
+        box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+    `;
+    
+    controlsSection.innerHTML = `
+        <h3 style="color: #ff69b4; text-align: center; margin-bottom: 30px; font-size: 1.8em;">
+            🎮 Tùy Chỉnh Trải Nghiệm
+        </h3>
+        
+        <div class="section-divider"></div>
+        
+        <!-- Animation Speed Control -->
+        <div class="interactive-slider">
+            <label style="display: block; text-align: center; color: #ff1493; font-weight: bold; margin-bottom: 15px;">
+                ⚡ Tốc Độ Hiệu Ứng
+            </label>
+            <div class="slider-container">
+                <input type="range" min="50" max="200" value="100" class="custom-slider" id="animationSpeed">
+                <div class="slider-value" id="speedValue">100%</div>
+            </div>
+        </div>
+        
+        <div class="section-divider"></div>
+        
+        <!-- Toggle Controls -->
+        <div style="text-align: center; margin: 30px 0;">
+            <h4 style="color: #ff69b4; margin-bottom: 20px;">🎨 Bật/Tắt Hiệu Ứng</h4>
+            
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="toggleParticles" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+                <span style="color: #ff1493; align-self: center;">✨ Particles</span>
+                
+                <label class="toggle-switch">
+                    <input type="checkbox" id="toggleHearts" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+                <span style="color: #ff1493; align-self: center;">💖 Hearts</span>
+                
+                <label class="toggle-switch">
+                    <input type="checkbox" id="toggleConfetti" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+                <span style="color: #ff1493; align-self: center;">🎊 Confetti</span>
+            </div>
+        </div>
+        
+        <div class="section-divider"></div>
+        
+        <!-- Action Buttons -->
+        <div class="btn-group">
+            <button class="interactive-btn pulse-btn" id="triggerFireworks">
+                <span>🎆 Bắn Pháo Hoa</span>
+            </button>
+            <button class="interactive-btn" id="triggerConfetti">
+                <span>🎊 Thả Confetti</span>
+            </button>
+            <button class="interactive-btn" id="playMusic">
+                <span>🎵 Phát Nhạc</span>
+            </button>
+        </div>
+        
+        <div class="section-divider"></div>
+        
+        <!-- Icon Buttons -->
+        <div style="text-align: center; margin: 30px 0;">
+            <h4 style="color: #ff69b4; margin-bottom: 20px;">🎯 Hành Động Nhanh</h4>
+            <button class="icon-btn" id="resetAll" title="Reset tất cả">🔄</button>
+            <button class="icon-btn" id="fullscreen" title="Toàn màn hình">⛶</button>
+            <button class="icon-btn" id="screenshot" title="Chụp màn hình">📸</button>
+            <button class="icon-btn" id="shareBtn" title="Chia sẻ">📤</button>
+        </div>
+    `;
+    
+    // Insert before share section
+    const shareSection = document.querySelector('.share-section');
+    if (shareSection) {
+        shareSection.parentNode.insertBefore(controlsSection, shareSection);
+    } else {
+        celebrationContent.appendChild(controlsSection);
+    }
+    
+    // Add event listeners
+    setupInteractiveControls();
+}
+
+function setupInteractiveControls() {
+    // Animation speed slider
+    const speedSlider = document.getElementById('animationSpeed');
+    const speedValue = document.getElementById('speedValue');
+    
+    if (speedSlider && speedValue) {
+        speedSlider.addEventListener('input', (e) => {
+            const value = e.target.value;
+            speedValue.textContent = value + '%';
+            
+            // Adjust animation speeds
+            document.documentElement.style.setProperty('--animation-speed', value / 100);
+        });
+    }
+    
+    // Toggle particles
+    const toggleParticles = document.getElementById('toggleParticles');
+    if (toggleParticles) {
+        toggleParticles.addEventListener('change', (e) => {
+            const particles = document.getElementById('particles');
+            if (particles) {
+                particles.style.display = e.target.checked ? 'block' : 'none';
+            }
+        });
+    }
+    
+    // Toggle hearts
+    const toggleHearts = document.getElementById('toggleHearts');
+    if (toggleHearts) {
+        toggleHearts.addEventListener('change', (e) => {
+            const hearts = document.getElementById('floatingEmojis');
+            if (hearts) {
+                hearts.style.display = e.target.checked ? 'block' : 'none';
+            }
+        });
+    }
+    
+    // Toggle confetti
+    const toggleConfetti = document.getElementById('toggleConfetti');
+    if (toggleConfetti) {
+        toggleConfetti.addEventListener('change', (e) => {
+            const confetti = document.getElementById('confetti');
+            if (confetti) {
+                confetti.style.display = e.target.checked ? 'block' : 'none';
+            }
+        });
+    }
+    
+    // Trigger fireworks button
+    const triggerFireworks = document.getElementById('triggerFireworks');
+    if (triggerFireworks) {
+        triggerFireworks.addEventListener('click', () => {
+            startFireworks();
+            showNotification('🎆 Pháo hoa đang bắn!', 'success');
+        });
+    }
+    
+    // Trigger confetti button
+    const triggerConfetti = document.getElementById('triggerConfetti');
+    if (triggerConfetti) {
+        triggerConfetti.addEventListener('click', () => {
+            createPinkConfettiExplosion();
+            showNotification('🎊 Confetti đã thả!', 'success');
+        });
+    }
+    
+    // Play music button
+    const playMusic = document.getElementById('playMusic');
+    if (playMusic) {
+        playMusic.addEventListener('click', () => {
+            const musicBtn = document.getElementById('musicBtn');
+            if (musicBtn) {
+                musicBtn.click();
+            }
+        });
+    }
+    
+    // Reset all button
+    const resetAll = document.getElementById('resetAll');
+    if (resetAll) {
+        resetAll.addEventListener('click', () => {
+            if (confirm('Bạn có chắc muốn reset tất cả?')) {
+                location.reload();
+            }
+        });
+    }
+    
+    // Fullscreen button
+    const fullscreen = document.getElementById('fullscreen');
+    if (fullscreen) {
+        fullscreen.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+                showNotification('📺 Đã vào chế độ toàn màn hình', 'success');
+            } else {
+                document.exitFullscreen();
+                showNotification('📺 Đã thoát chế độ toàn màn hình', 'success');
+            }
+        });
+    }
+    
+    // Screenshot button
+    const screenshot = document.getElementById('screenshot');
+    if (screenshot) {
+        screenshot.addEventListener('click', () => {
+            showNotification('📸 Chức năng chụp màn hình đang được phát triển!', 'success');
+        });
+    }
+    
+    // Share button
+    const shareBtn = document.getElementById('shareBtn');
+    if (shareBtn) {
+        shareBtn.addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Sinh Nhật Của Châu 🎂',
+                    text: 'Chúc mừng sinh nhật! 🎉',
+                    url: window.location.href
+                }).then(() => {
+                    showNotification('✅ Đã chia sẻ thành công!', 'success');
+                }).catch(() => {
+                    copyLink();
+                });
+            } else {
+                copyLink();
+            }
+        });
+    }
+}
+
+// Initialize interactive controls when celebration content is shown
+const originalGiftBoxClick = giftBox ? giftBox.onclick : null;
+if (giftBox && originalGiftBoxClick) {
+    giftBox.onclick = function() {
+        originalGiftBoxClick.call(this);
+        
+        // Add interactive controls after a delay
+        setTimeout(() => {
+            addInteractiveControls();
+        }, 2000);
     };
 }
